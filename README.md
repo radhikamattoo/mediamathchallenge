@@ -1,5 +1,6 @@
-@author Radhika Mattoo
+@radhikamattoo
 rm3485@nyu.edu
+March, 2016
 
 
 ## Assumptions/ Information
@@ -24,6 +25,6 @@ rm3485@nyu.edu
 
   `curl -X POST --data-binary @sample.txt http://localhost:5000/ `
 
-  See output from mediaMath.js...
+  See output...
 
   `curl -X POST --data-binary @sample.txt http://localhost:5000/no_blue`
