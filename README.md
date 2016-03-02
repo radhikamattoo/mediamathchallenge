@@ -6,6 +6,7 @@ rm3485@nyu.edu
 *  sample.txt is in the same directory as mediaMath.js
 *  Port 5000 is the hardcoded default port
 *  node_modules folder has been ignored via .gitignore
+*  I have not set up any app.get() methods, so there's no need for browser interaction.
 
 ## Node Modules Used
 *  http
@@ -13,16 +14,16 @@ rm3485@nyu.edu
 *  body-parser
 
 ## Example Run
-Open ** two ** terminals and navigate to the mediaMath repo in both.
+1. Open two terminals and navigate to the MediaMath-Challenge repo in both.
 
-In one terminal:
+2. In one terminal:
 
-`node mediaMath.js`
+  `node mediaMath.js`
 
-In the other:
+3. In the other:
 
-`curl -X POST --data-binary @sample.txt http://localhost:5000/ `
+  `curl -X POST --data-binary @sample.txt http://localhost:5000/ `
 
-See output from mediaMath.js...
+  See output from mediaMath.js...
 
-`curl -X POST --data-binary @sample.txt http://localhost:5000/no_blue`
+  `curl -X POST --data-binary @sample.txt http://localhost:5000/no_blue`
