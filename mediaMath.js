@@ -20,8 +20,10 @@ function containsBlue(word){
 //parses request body according to blue boolean value
 function parseBody(body, wantBlue){
 	var returnObj = {};
-	//clear out new lines, carriage returns, periods, make case insensitive
-	string = Object.keys(body).toString().toLowerCase().replace(/(\r\n|\n|\r|\.)/gm,"");
+	//clear out new lines, carriage returns, punctuation, and make case insensitive
+	string = Object.keys(body).toString().toLowerCase().replace(/(\r\n|\n|\r|[.,\/#!$%\^&\*;:{}=\-_`~()])/gm,"");
+
+	//split string and parse each element as object property
 	array = string.split(" ");
 	array.forEach(function(word){
 		//do we not want blue and the word contains it?
@@ -39,9 +41,10 @@ function parseBody(body, wantBlue){
 //MIDDLEWARE
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(function(req, res, next) {
-  var contentType = req.headers['content-type'] || '', mime = contentType.split(';')[0];
+  var contentType = req.headers['content-type'] || '';
+	mime = contentType.split(';')[0];
 
-	if (mime != 'application/x-www-form-urlencoded') {
+	if (mime !== 'application/x-www-form-urlencoded') {
 		console.log("ERROR: This is not the specified binary file.");
 		return next();
   }
@@ -56,7 +59,7 @@ app.post('/', function(req, res){
 
 //ignore blue
 app.post('/no_blue', function(req, res){
-	var toSend = parseBody(req.body, false); //i.e. we ignore blue
+	var toSend = parseBody(req.body, false); //ignore blue
 	res.status(200).send(toSend);
 });
 
